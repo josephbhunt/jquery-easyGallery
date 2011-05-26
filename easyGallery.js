@@ -19,16 +19,16 @@
     $.extend(options, settings || {})
     var self = this;
     $.extend(self, {
-      currentlyDisplayedImage:  $('#'+self.attr("id")+' :first'),
-      thumbListContainerType: $("#"+options.thumbListId).children().get(0).tagName,
-      imageListContainerType: $("#"+self.attr("id")).children().get(0).tagName,
-      allThumbnailImages: function() { return $('#'+options.thumbListId+' '+self.thumbListContainerType+' img'); },
-      getThumbnailImageByName:  function(name) { return $('#'+options.thumbListId+' '+self.thumbListContainerType+'[name="'+name+'"] img'); },
-      getCaptionByImageName: function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"] .'+options.captionClass); },
-      getImageListItemByName: function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"]'); },
-      getImageByName: function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"] img'); },
-      hasMoreThanOneThumbnail:  function() { return self.allThumbnailImages().length > 1; },
-      displayNoImagesCaptionsListItems: function(){
+      currentlyDisplayedImage:            $('#'+self.attr("id")+' :first'),
+      thumbListContainerType:             $("#"+options.thumbListId).children().get(0).tagName,
+      imageListContainerType:             $("#"+self.attr("id")).children().get(0).tagName,
+      allThumbnailImages:                 function() { return $('#'+options.thumbListId+' '+self.thumbListContainerType+' img'); },
+      getThumbnailImageByName:            function(name) { return $('#'+options.thumbListId+' '+self.thumbListContainerType+'[name="'+name+'"] img'); },
+      getCaptionByImageName:              function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"] .'+options.captionClass); },
+      getImageListItemByName:             function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"]'); },
+      getImageByName:                     function(name) { return $('#'+self.attr("id")+' '+self.imageListContainerType+'[name="'+name+'"] img'); },
+      hasMoreThanOneThumbnail:            function() { return self.allThumbnailImages().length > 1; },
+      displayNoImagesCaptionsListItems:   function(){
         $('#'+self.attr("id")+' '+self.imageListContainerType+' img').each(function(){
           $(this).css('display', 'none');
         });
@@ -43,32 +43,32 @@
         ( !self.hasMoreThanOneThumbnail() && options.hideSingletonThumbnail) ? $('#'+options.thumbnailContainerId).css('display', 'none') : $('#'+options.thumbnailContainerId).css('display', 'block');
       },
       
-      fadeAllThumbs:  function(){
+      fadeAllThumbs:                      function(){
         self.allThumbnailImages().each(function(){
           $(this).css('opacity', options.thumbFadeDownOpacity);
         });
       },
 
-      fadeThumb:  function(element){
+      fadeThumb:                          function(element){
         $(element).fadeTo(options.thumbFadeOutSpeed, options.thumbFadeDownOpacity);
         $(element).css({'border': '0px', 'margin': '1px'});
       },
 
-      showThumb:  function(element){
+      showThumb:                          function(element){
         $(element).fadeTo(options.thumbFadeInSpeed, options.thumbFadeUpOpacity);
         $(element).css({'border': '1px solid #7b7c7e', 'margin': '0px'});
       },
 
-      isCurrentlyDisplayedElement:  function(element){
+      isCurrentlyDisplayedElement:        function(element){
         return element.attr('name') == (self.currentlyDisplayedImage.attr('name'));
       },
 
-      fadeShowThumb: function(oldImage){
+      fadeShowThumb:                      function(oldImage){
         self.fadeThumb( self.getThumbnailImageByName(oldImage.attr('name')));
         self.showThumb( self.getThumbnailImageByName(self.currentlyDisplayedImage.attr('name')));
       },
       
-      switchCaptions: function(oldCaption, currentlyDisplayedCaption) {
+      switchCaptions:                     function(oldCaption, currentlyDisplayedCaption) {
         oldCaption.stop(true, true);
         oldCaption.animate({ color: 'white'}, options.imageFadeOutSpeed, function(){
           oldCaption.css('display', 'none');
@@ -77,7 +77,7 @@
         });
       },
 
-      displayImage: function(thumbListItem){
+      displayImage:                       function(thumbListItem){
         var oldImage = self.currentlyDisplayedImage;
         self.currentlyDisplayedImage = self.getImageListItemByName(thumbListItem.attr('name'));
         self.fadeThumb(self.getThumbnailImageByName(oldImage.attr('name')));
