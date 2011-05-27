@@ -3,26 +3,23 @@
   <script type="text/javascript" src="jquery-1.5.2.min.js"></script>
   <script type="text/javascript" src="../easyGallery.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $("#imageContainer").easyGallery({
-        thumbListId:              "thumbList",
-        thumbnailContainerId:     "thumbListWrapper"
+      $(document).ready(function(){
+        $(".thumb").easyGallery({
+          imageContainerId:         "imageContainer",
+          imageFileType:            "jpg",
+          imageFilePath:            "img/"
+        });
       });
-    });
-  </script>
-</head>
-<body>
-  <div id="imageContainer">
-    <div name="img1"><img src="img/sunset_summer.jpg" /></div>
-    <div name="img2"><img src="img/summerbeach.jpg" /></div>
-    <div name="img3"><img src="img/misty_mountains.jpg" /></div>
-  </div>
-  <div id="thumbListWrapper">
-    <div id="thumbList">
-      <div name="img1"><img src="thumb/sunset_summer.jpg" /></div>
-      <div name="img2"><img src="thumb/summerbeach.jpg" /></div>
-      <div name="img3"><img src="thumb/misty_mountains.jpg" /></div>
+    </script>
+  </head>
+  <body>
+      <div id="imageContainer"><img src="img/sunset_summer.jpg" /></div>
+    <div id="thumbListWrapper">
+      <div id="thumbList">
+        <div class="thumb" name="sunset_summer"><img src="thumb/sunset_summer.jpg" /></div>
+        <div class="thumb" name="summerbeach"><img src="thumb/summerbeach.jpg" /></div>
+        <div class="thumb" name="misty_mountains"><img src="thumb/misty_mountains.jpg" /></div>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
